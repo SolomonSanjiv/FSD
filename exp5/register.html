@@ -1,106 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            text-align: center;
-            font-family: sans-serif;
-        }
-        h1{
-            font-size: 20px;
-        }
-        table tr td{
-            padding-top: 6px;
-            padding-bottom: 6px;
-        }
-        fieldset{
-            width: 500px;
-            text-align: center;
-            margin: auto;
-        }
-    </style>
-    <div id="header">
-        <h1>Registration</h1>
-    </div>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <style>
+            body{
+                  text-align: center;
+                  font-family: sans-serif;
+            }
+            table tr td{
+                  padding-top: 6px;
+                  padding-bottom: 6px;
+            }
+            fieldset{
+                  width: 500px;
+                  text-align: center;
+                  margin: auto;
+            }
+            h1{
+                  font-size: 20px;
+                  font-family: 'Times New Roman', Times, serif;
+            }
+      </style>
+      <div id="header"><h1>Register</h1></div>
 </head>
-<script>
-    function validate(){
-        var fn=frm.fname.value;
-        localStorage.setItem("firstname",fn)
-        for(x in fn){
-            ch=fn.charCodeAt(x);
-            if(ch<65||ch>98&&ch<97||ch>122){
-                alert("invalid first name");
-                return false;
+      <script>
+            function validate(){
+                 
+                  var fn=frm.fname.value;
+                  localStorage.setItem('firstname',fn);
+                  for(x in fn){
+                        ch=fn.charCodeAt(x);
+                        if(ch<65||ch>90 && ch<97|| ch>122){
+                              alert("Invalid First name");
+                              return false;    
+                        }
+                  }
+                 
+                  var ln=frm.lname.value;
+                  localStorage.setItem('lastname',ln);
+                  for(y in ln){
+                        ch=ln.charCodeAt(y);
+                        if(ch<65||ch>90 && ch<97|| ch>122){
+                              alert("Invalid Last name");
+                              return false;    
+                        }
+                  }
+
+                  var phn=frm.phone.value;
+                  localStorage.setItem('phone',phn);
+                  var lenp=phn.length;
+                  if(lenp!==10){
+                        alert("Phone Number Should be exactly 10 digits");
+                        return false;
+                  }
+
+                  var pwd1=frm.pwd.value;
+                  localStorage.setItem("password",pwd1);
+                  var pwdl=pwd1.length;
+                  if(pwdl%2===1){
+                        alert("Password Should Contain Even Number Number Of Characters");
+                        return false;
+                  }
+                  if(pwd1>8){
+                        alert("Password Should Not Exceed 8 digits");
+                        return false;
+                  }
+
+                  var reg=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                  var mail=frm.mailid.value;
+                  localStorage.setItem('email',mail);
+                  if(reg.test(mail)){
+                        alert("Registration successful");
+                  }
+                  else{
+                        alert("Invalid Email");
+                        return false;
+                  }
+                  return true;
             }
-        }
-        var ln=frm.lname.value;
-        localStorage.setItem("lastname",ln)
-        for(y in ln){
-            ch=ln.charCodeAt(y);
-            if(ch<65||ch>97&&ch<97||ch>122){
-                alert("invalid last name");
-                return false;
-            }
-        }
-        var phn=frm.phone.value;
-        localStorage.setItem("phone",phn)
-        var lenp=phn.length;
-        if(lenp!==10){
-            alert("phone no should be exactly 10 digits");
-            return fales;
-            }
-        var phn=frm.pwd.value;
-        localStorage.setItem("password",pwd)
-        var pwd1=pwd1.lendth;
-        if(pwd1%2==1){
-            alert("password should contain even number of characters");
-            return false;
-        }
-        if(pwd1>8){
-            alert("password should not exceed 8 digits");
-            return false;
-        }
-        var reg=/^\w+([-+.']\w+)+@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-        var mail=frm.mailid.value;
-        localStorage.setItem("email",mail)
-        if(reg.test(mail)){
-            alert("Registation Successfull!!");
-        }
-        else{
-            alert("invalid email");
-            return false;
-        }
-        return true;
-        }
-</script>
+      </script>
 <body>
-    <center>
-        <form mame="frm" method="post" action="/login" onsubmit="return validate()">
-            <fieldset align="center">
-                <table align="center">
-                    <tr><td>FirstName:</td><td><input type="text" name="fname" value="" size="50" required/></td></tr>
-                    <tr><td>LastName:</td><td><input type="text" name="lname" value="" size="50" required/></td></tr>
-                    <tr><td>Phone No:</td><td><input type="text" name="phone" value="" size="50" required/></td></tr>
-                    <tr><td>Mail Id:</td><td><input type="email" name="email" value="" size="50" required/></td></tr>
-                    <tr><td>Gender:</td><td>Male:<input type="radio" name="grnder" value="male">
-                        Female:<input type="radio" name="grnder" value="female"></td></tr>
-                    <tr><td>DOB:</td><td><input type="date" name="dob" size="50" required/></td></tr>
-                    <tr><td>UserName:</td><td><input type="text" name="uname" value="" size="50" required/></td></tr>
-                    <tr><td>Password:</td><td><input type="password" name="pwd" value="" size="50" required/></td></tr>
-                    <tr><td>Age:</td><td><input type="text" name="age" value="" size="50" required/></td></tr>
-                </table>
-                    <input type="submit" value="SUBMIT" name="submit"/>
-            </fieldset>
-        </form>
-    </center>
-<body>
-<div id="footer">
-    Copyright @CMRIT_2025
-</div>
+      <center>
+            <form name="frm" method="post" action= "/login" onsubmit="return validate()">
+                  <fieldset allign="cneter">
+                        <table allign="center">
+                              <tr>
+                                    <td>First Name:</td>
+                                    <td><input type="text" name="fname" value="" size="50" required/></td></tr><tr>
+                                    <td>Last Name:</td>
+                                    <td><input type="text" name="lname" value="" size="50" required/></td></tr><tr>
+                                    <td>Phone Number:</td>
+                                    <td><input type="text" name="phone" value="" size="50" required/></td></tr><tr>
+                                    <td>Email:</td>
+                                    <td><input type="email" name="mailid" value="" size="50" required/></td></tr><tr>
+                                    <td>Gender:</td><td>
+                                          Male: <input type="radio" name="gender" value="male">
+                                          Female: <input type="radio" name="gender" value="female"></td></tr><tr>
+                                    <td>DOB:</td>
+                                    <td><input type="date" name="dob" value="" size="50" required/></td></tr><tr>
+                                    <td>User Name:</td>
+                                    <td><input type="text" name="uname" value="" size="50" required/></td></tr><tr>
+                                    <td>Password:</td>
+                                    <td><input type="password" name="pwd" value="" size="50" required/></td></tr><tr>
+                                    <td>Age:</td>
+                                    <td><input type="text" name="age" value="" size="50" required/></td></tr>
+                        </table>
+                        <input type="submit" value="Submit" name="submit"/>
+                  </fieldset>
+            </form>
+      </center>
 </body>
-</body>
+      <div id="footer">Copyright@CMRIT_2025</div>
 </html>
