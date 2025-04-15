@@ -1,0 +1,22 @@
+1)create virtual environment
+->python -m venv venv
+
+2)activate virtual envrinoment
+->.\venv\scripts\activate
+
+3)to install Django
+->pip install Django
+
+4)to create project
+django-admin startproject menuitems
+
+5)open project in cmd
+->cd first
+
+6)run the project
+->py manage.py runserver
+
+**in settings.py file import(line 13) 
+->import os
+**in line 58 modify
+->'DIRS': [os.path.join(BASE_DIR,'menuitems/templates'),],
